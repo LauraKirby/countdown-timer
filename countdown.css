@@ -1,0 +1,49 @@
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+body{
+  margin: 0;
+}
+
+nav {
+  background-color: #DDECC8;
+  width: 32%; /* fallback for older browsers */
+  display: inline-block;
+  vertical-align: top;
+  padding: 4px;
+}
+
+article {
+  background-color: #EBC8EC;
+  width: 32%;
+  display: inline-block;
+  vertical-align: top;
+  padding: 4px;
+}
+
+aside {
+  background-color: #C8D0EC;
+  width: 32%;
+  display: inline-block;
+  vertical-align: top;
+  padding: 4px;
+}
+
+header {
+  background-color: #C8ECEB;
+}
+
+section {
+  background-color: #ECE8C8;
+}
+
+footer {
+  background-color: #ECD8C8;
+  vertical-align: bottom;
+}
+
+.primary-btn-start {
+  background-color: #C8ECC9;
+}
