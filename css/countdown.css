@@ -5,6 +5,7 @@ html {
 
 body{
   margin: 0;
+  font-family: 'Roboto', sans-serif;
 }
 
 nav {
@@ -44,6 +45,13 @@ footer {
   vertical-align: bottom;
 }
 
+ul {
+  list-style-type: none;
+}
 .primary-btn-start {
   background-color: #C8ECC9;
+}
+
+.avatar {
+  max-height: 80px;
 }

@@ -2,7 +2,9 @@
 <html>
 <head>
   <title>countdown</title>
-  <link rel="stylesheet" href="./countdown.css">
+  <link rel="stylesheet" href="./css/countdown.css">
+  <!-- <script type="text/javascript" href="./countdown.js"></script> -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </head>
 <body>
 
@@ -19,7 +21,7 @@
       <h2>Choose Your Interest</h2>
     </header>
     <ul>
-      <li>Menu 1</li>
+      <li class="current-time">Current time</li>
       <li>Menu 2</li>
       <li>Menu 3</li>
     </ul>
@@ -32,31 +34,36 @@
     </header>
 
     <section>
+
+
+      <h3>First Logical Part (e.g. "Theory")</h3>
+
       <form>
         <fieldset>
           <label>Start Time:</label>
-          <input type="text" name="end-time">
 
-          <button class="primary-btn-start" >Start countdown</button>
+          <label>Hours:</label><input type="text" class="end-hour">
+          <label>Minutes:</label> <input type="text" class="end-minute">
+
+          <button class="primary-btn save-end-time" >Start countdown</button>
         </fieldset>
       </form>
 
-      <h3>First Logical Part (e.g. "Theory")</h3>
-      <p>Paragraph 1 in first section</p>
 
-      <h4>Some Other Subheading in First Section</h4>
-      <p>Paragraph 2 in first section</p>
+
+      <h4>Start Time</h4>
+      <p class="end-time-description">The timer will end at: </p>
     </section>
 
     <section>
-      <h3>Second Logical Part (e.g. "Practice")</h3>
-      <p>Paragraph 1 in second section</p>
-      <p>Paragraph 2 in second section</p>
+      <h3>Time Remaining</h3>
+      <p id="clock"></p>
+      <p>How will you make the most of the time remaining?</p>
     </section>
 
     <footer>
-      <h4>Author Bio</h4>
-      <p>Paragraph in Article's Footer</p>
+      <h4>Time</h4>
+      <p>Time is a curious thing. The more we watch it, the stranger we become.</p>
     </footer>
 
   </article>
@@ -77,7 +84,10 @@
 
     <section>
       <h3>Testimonials</h3>
-      <ul>...</ul>
+      <ul>
+        <li><img class="avatar" src="./images/face_1.png"> I love this countdown timer.</li>
+        <li><img class="avatar" src="./images/face_2.png"> Countdown timers created by Laura rock!</li>
+      </ul>
     </section>
 
   </aside>
@@ -88,5 +98,9 @@
       <li>Social Media Links</li>
     </ul>
   </footer>
+
+  <script type="text/javascript" src="./js/countdown.js"></script>
+  <script>countdownTimer.init();</script>
+
 </body>
 </html>
