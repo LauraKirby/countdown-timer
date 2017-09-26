@@ -8,99 +8,90 @@
 </head>
 <body>
 
-<!-- visit: https://gsnedders.html5.org/outliner/ -->
-<!--  see semantic outline of document -->
-<!-- document outline is primarily defined by the 5 sectioning elements, it also needs proper headings for each section -->
   <header>
-    <h1>Welcome</h1>
+    <h1>Welcome to the Countdown Timer</h1>
     <p>A place where counting down time never gets old.</p>
+    <p>Built with Javascript and semantic HTML</p>
   </header>
+<main class="column-container">
 
-  <nav>
-    <header>
-      <h2>Choose Your Interest</h2>
-    </header>
-    <ul>
-      <li class="current-time">Current time</li>
-      <li>Menu 2</li>
-      <li>Menu 3</li>
-    </ul>
-  </nav>
-
-  <article>
-    <header>
-      <h1>Countdown Timer</h1>
-      <h2>Built with Javascript and semantic HTML</h2>
-    </header>
-
-    <section>
+  <!-- visit: https://gsnedders.html5.org/outliner/ -->
+  <!--  see semantic outline of document -->
+  <!-- document outline is primarily defined by the 5 sectioning elements, it also needs proper headings for each section -->
 
 
-      <h3>First Logical Part (e.g. "Theory")</h3>
+    <nav class="column">
+      <header>
+        <h2>Choose Your Settings</h2>
+      </header>
+      <p>Current time: <span class="current-time"></span></p>
 
       <form>
         <fieldset>
-          <label>Start Time:</label>
-
-          <label>Hours:</label><input type="text" class="end-hour">
-          <label>Minutes:</label> <input type="text" class="end-minute">
-
-          <button class="primary-btn save-end-time" >Start countdown</button>
+          <p>Stop clock in <input type="number" class="end-hour"> hours and <input type="number" class="end-minute"> minutes. </p>
+          <button class="primary-btn save-end-time">Start countdown</button>
         </fieldset>
       </form>
+    </nav>
+
+    <article class="column">
+      <header>
+        <h1>Countdown Timer</h1>
+      </header>
+
+      <section>
+
+
+        <h3>Time Remaining</h3>
+
+        <p class="time-remaining"></p>
+        <p class="end-time-description">The timer will end at: <span class="end-time"></span> </p>
+      </section>
+
+      <section>
+        <h3>Time Remaining</h3>
+        <p id="clock"></p>
+        <p>How will you make the most of the time remaining?</p>
+      </section>
+    </article>
+
+    <aside class="column">
+
+      <h2>Learn more</h2>
+
+      <section>
+        <h3>Github</h3>
+        <ul><a href="https://github.com/LauraKirby/countdown-timer">countdown-time source code</a></ul>
+      </section>
+
+      <section>
+        <h3>Created for</h3>
+        <ul><a href="https://www.powr.io/">powr.io</a></ul>
+      </section>
+
+      <section>
+        <h3>Testimonials</h3>
+        <ul>
+          <li><img class="avatar" src="./images/face_1.png"> I love this countdown timer.</li>
+          <li><img class="avatar" src="./images/face_2.png"> Countdown timers created by Laura rock!</li>
+        </ul>
+      </section>
+
+    </aside>
+
+</main>
 
 
 
-      <h4>Start Time</h4>
-      <p class="end-time-description">The timer will end at: </p>
-    </section>
+<footer>
+  <ul>
+    <li>Copyright</li>
+    <li>Social Media Links</li>
+  </ul>
+</footer>
 
-    <section>
-      <h3>Time Remaining</h3>
-      <p id="clock"></p>
-      <p>How will you make the most of the time remaining?</p>
-    </section>
-
-    <footer>
-      <h4>Time</h4>
-      <p>Time is a curious thing. The more we watch it, the stranger we become.</p>
-    </footer>
-
-  </article>
-
-  <aside>
-
-    <h2>Learn more</h2>
-
-    <section>
-      <h3>Github</h3>
-      <ul>(link to project)</ul>
-    </section>
-
-    <section>
-      <h3>Created for</h3>
-      <ul>Coding Challenge</ul>
-    </section>
-
-    <section>
-      <h3>Testimonials</h3>
-      <ul>
-        <li><img class="avatar" src="./images/face_1.png"> I love this countdown timer.</li>
-        <li><img class="avatar" src="./images/face_2.png"> Countdown timers created by Laura rock!</li>
-      </ul>
-    </section>
-
-  </aside>
-
-  <footer>
-    <ul>
-      <li>Copyright</li>
-      <li>Social Media Links</li>
-    </ul>
-  </footer>
-
-  <script type="text/javascript" src="./js/countdown.js"></script>
-  <script>countdownTimer.init();</script>
+<script type="text/javascript" src="./js/countdown.js"></script>
+<script>countdownTimer.init();</script>
 
 </body>
 </html>

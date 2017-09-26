@@ -4,8 +4,12 @@ html {
 }
 
 body{
+  height: 100%;
   margin: 0;
+  padding: 1% 4% 0% 4%;
   font-family: 'Roboto', sans-serif;
+  background-color: #C8ECEB;
+  position:relative;
 }
 
 nav {
@@ -32,26 +36,40 @@ aside {
   padding: 4px;
 }
 
-header {
-  background-color: #C8ECEB;
+input {
+  max-width: 40px;
 }
 
-section {
+/*section {
   background-color: #ECE8C8;
 }
-
+*/
 footer {
   background-color: #ECD8C8;
   vertical-align: bottom;
+  left: 0 ; right: 0; bottom: 0;
 }
 
 ul {
   list-style-type: none;
+  padding-right: 10px;
+  -webkit-padding-start: 10px;
 }
+
 .primary-btn-start {
   background-color: #C8ECC9;
 }
 
+
 .avatar {
   max-height: 80px;
+}
+
+.column-container {
+    display: table; /* Make the container element behave like a table */
+    width: 100%; /* Set full-width to expand the whole page */
+}
+
+.column {
+    display: table-cell; /* Make elements inside the container behave like table cells */
 }
