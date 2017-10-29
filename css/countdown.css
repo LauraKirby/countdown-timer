@@ -22,7 +22,7 @@ nav {
 
 article {
   background-color: #EBC8EC;
-  width: 32%;
+  width: 42%;
   display: inline-block;
   vertical-align: top;
   padding: 4px;
@@ -30,7 +30,7 @@ article {
 
 aside {
   background-color: #C8D0EC;
-  width: 32%;
+  width: 22%;
   display: inline-block;
   vertical-align: top;
   padding: 4px;
@@ -65,11 +65,18 @@ ul {
   max-height: 80px;
 }
 
-.column-container {
-    display: table; /* Make the container element behave like a table */
+.container {
+    display: table;  /* Make the container element behave like a table */
     width: 100%; /* Set full-width to expand the whole page */
 }
 
-.column {
-    display: table-cell; /* Make elements inside the container behave like table cells */
+.row {
+  display: table-row;
+    /*display: table-cell;  Make elements inside the container behave like table cells*/
+     width: 100%
 }
+
+.column {
+    display: table-cell;   /* Make elements inside the container behave like table cells*/
+}
+

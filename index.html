@@ -13,50 +13,48 @@
     <p>A place where counting down time never gets old.</p>
     <p>Built with Javascript and semantic HTML</p>
   </header>
-<main class="column-container">
+<main class="container">
 
   <!-- visit: https://gsnedders.html5.org/outliner/ -->
   <!--  see semantic outline of document -->
   <!-- document outline is primarily defined by the 5 sectioning elements, it also needs proper headings for each section -->
 
-
-    <nav class="column">
-      <header>
-        <h2>Choose Your Settings</h2>
-      </header>
-      <p>Current time: <span class="current-time"></span></p>
-
-      <form>
-        <fieldset>
-          <p>Stop clock in <input type="number" class="end-hour"> hours and <input type="number" class="end-minute"> minutes. </p>
-          <button class="primary-btn save-end-time">Start countdown</button>
-        </fieldset>
-      </form>
-    </nav>
-
     <article class="column">
-      <header>
+      <header class="row">
         <h1>Countdown Timer</h1>
       </header>
 
-      <section>
+      <section class="row">
+        <header>
+          <h2>Choose Your Settings</h2>
+        </header>
+        <p>Current time: <span data-time="start" class="current-time"></span></p>
 
+        <form>
+          <p>Stop clock in <input type="number" class="end-hour"> hours and <input type="number" class="end-minute"> minutes. </p>
+          <button class="primary-btn add-end-time">Start countdown</button>
+        </form>
 
-        <h3>Time Remaining</h3>
-
-        <p class="time-remaining"></p>
-        <p class="end-time-description">The timer will end at: <span class="end-time"></span> </p>
+        <!-- show blow on submit  -->
+        <p>Counting Down from %start% to %stop%</p>
       </section>
 
-      <section>
-        <h3>Time Remaining</h3>
+      <section class="row">
+        <h2>Time Remaining</h2>
+
+        <p class="end-time-description">
+          The timer will end at: <span class="end-time"></span>
+        </p>
+        <p class="time-remaining"></p>
+      </section>
+
+      <section class="row">
         <p id="clock"></p>
         <p>How will you make the most of the time remaining?</p>
       </section>
     </article>
 
     <aside class="column">
-
       <h2>Learn more</h2>
 
       <section>
@@ -72,11 +70,10 @@
       <section>
         <h3>Testimonials</h3>
         <ul>
-          <li><img class="avatar" src="./images/face_1.png"> I love this countdown timer.</li>
-          <li><img class="avatar" src="./images/face_2.png"> Countdown timers created by Laura rock!</li>
+          <li><img alt="reviewer" class="avatar" src="./images/face_1.png"> I love this countdown timer.</li>
+          <li><img alt="reviewer" class="avatar" src="./images/face_2.png"> Countdown timers created by Laura rock!</li>
         </ul>
       </section>
-
     </aside>
 
 </main>
@@ -91,7 +88,6 @@
 </footer>
 
 <script type="text/javascript" src="./js/countdown.js"></script>
-<script>countdownTimer.init();</script>
 
 </body>
 </html>
