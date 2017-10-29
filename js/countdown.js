@@ -19,119 +19,123 @@ Implementation:
   - stop clock when current time is reached
 */
 
-// TO DO - DISPLAY TIME GOING DOWN
+// 1. select input
+// 2. add end-time to timer controller
+// 3. calculate the countdown
+// 4. display the countdown in the UI
 
+// Timer Controller - keep track of the times times that a person
+var timeController = (function(){
+  var startTime = function(){
+    this.time = new Date();
+    this.hour = this.time.getHours();
+    this.minute = this.time.getMinutes();
+    this.seconds = this.time.getSeconds();
+  };
 
-window.countdownTimer = window.countdownTimer || {};
+  var endTime = function(minute, hour){
+    this.minute = minute;
+    this.hour = hour;
+    this.second = 0;
+  };
 
-(function() {
-  const endTime = document.querySelector("input[name='end-time']");
-
-  var startCountDown = function(e){
-    e.preventDefault();
-    var endHour = document.querySelector('.end-hour').value;
-    var endMinute = document.querySelector('.end-minute').value;
-
-    if (endHour == "") {
-      endHour = 0;
-    } else {
-      endHour = parseInt(endHour, 10);
+  var data = {
+    allTimes: {
+      starting: [],
+      ending: []
     }
-    if (endMinute == "") {
-      endMinute = 0;
-    } else {
-      endMinute = parseInt(endMinute, 10);
+  };
+
+  // allow other modules to add a new item to data structure
+
+  return {
+    currentTime: function(){
+      var newStartTime = new startTime();
+      console.log("new start time: ", newStartTime);
+      var timeString = newStartTime.hour;
+      timeString = timeString + ":" + newStartTime.minute;
+      return timeString;
+    },
+
+    addEndTime: function(endMinute, endHour) {
+      var newEndTime, newStartTime;
+      newEndTime = new endTime(endMinute, endHour);
+      newStartTime = new startTime();
+      console.log("new end time: ", newEndTime);
+
+      data.allTimes.starting.push(newStartTime);
+      data.allTimes.ending.push(newEndTime);
+      return newEndTime;
+    },
+
+    testing: function(){
+      console.log(data);
     }
+  };
+})();
 
-    var currentTime = new Date();
-    var year = currentTime.getFullYear();
-    var month = currentTime.getMonth();
-    var day = currentTime.getDate();
-    var hours = currentTime.getHours() + endHour;
-    var minutes = currentTime.getMinutes() + endMinute;
-    var seconds = currentTime.getSeconds()
+// User Interface Controller - create functionality for the UI
+var UIController = (function(){
+  // allows us to store the css selector strings in one place
+  var domStrings = {
+    inputHour: '.end-hour',
+    inputMinute: '.end-minute',
+    endTimeBtn: '.add-end-time',
+    currentTime: '.current-time',
+    timerEnd: 'end-time-description'
+  };
 
+  return {
+    getInput: function(){
+      return {
+        hour: document.querySelector(domStrings.inputHour).value,
+        minute: document.querySelector(domStrings.inputMinute).value
+      };
+    },
 
+    getDomStrings: function(){
+      return domStrings;
+    },
 
-    console.log("hour:  ", hours)
-    console.log("minute:  ", minutes)
-
-    // var endDisplay = endHour.value + " : " + endMinute.value
-    var endTimeDisplay = document.querySelector('.end-time')
-    var stopTime = new Date(year, month, day, hours, minutes, seconds)
-    endTimeDisplay.textContent = stopTime;
-  }
-
-  function displayCurrentTime(){
-    var todaysDate = new Date;
-    var year = todaysDate.getFullYear();
-    var month = todaysDate.getMonth();
-    var day = todaysDate.getDate();
-    var currentTime = document.querySelector('.current-time')
-
-    var futureDate = new Date(year + 1, month, day)
-    currentTime.insertAdjacentText('beforeend', todaysDate);
-    var deadline = futureDate
-    initializeCurrentTimeClock('.current-time', futureDate);
-  }
-
-
-function initializeCurrentTimeClock(className){
-    var clock = document.querySelector(className);
-    var currentTime = new Date()
-    var hours = currentTime.getHours()
-    var minutes = currentTime.getMinutes()
-    var seconds = currentTime.getSeconds()
-
-    if (minutes < 10){
-        minutes = "0" + minutes
-    }
-    var timeString = hours + ":" + minutes + " " + seconds + " ";
-    if(hours > 11){
-        timeString += "PM";
-    } else {
-        timeString += "AM";
-    }
-    document.querySelector('.current-time').innerHTML = timeString
-}
-setInterval(initializeCurrentTimeClock, 1000);
-
-  // function initializeClock(className, endtime){
-  //   var clock = document.querySelector(className);
-  //   var timeinterval = setInterval(function(){
-  //     var t = getTimeRemaining(endtime);
-  //     clock.innerHTML = 'days: ' + t.days + '<br>' +
-  //                       'hours: '+ t.hours + '<br>' +
-  //                       'minutes: ' + t.minutes + '<br>' +
-  //                       'seconds: ' + t.seconds;
-  //     if(t.total<=0){
-  //       clearInterval(timeinterval);
-  //     }
-  //   },1000);
-  // }
-
-  // function getTimeRemaining(endtime){
-  //   var t = Date.parse(endtime) - Date.parse(new Date());
-  //   var seconds = Math.floor( (t/1000) % 60 );
-  //   var minutes = Math.floor( (t/1000/60) % 60 );
-  //   var hours = Math.floor( (t/(1000*60*60)) % 24 );
-  //   var days = Math.floor( t/(1000*60*60*24) );
-  //   return {
-  //     'total': t,
-  //     'days': days,
-  //     'hours': hours,
-  //     'minutes': minutes,
-  //     'seconds': seconds
-  //   };
-  // }
-
-  var displayDate = new Date()
-
-  window.countdownTimer.init = function() {
-    document.querySelector('.save-end-time').addEventListener('click', startCountDown);
-    displayCurrentTime();
+    addListTime: function(){
+      // Create HTML string with placeholder
+      // replace placeholder with actual data
+      // insert the html into the DOM
+    },
   };
 
 })();
 
+// Global app controller
+// make controller only have function
 
+var controller = (function(timeCtrl, UICtrl){
+  var setupEventListeners = function(){
+    var domStrings = UICtrl.getDomStrings();
+
+    document.querySelector(domStrings.currentTime).innerHTML = timeCtrl.currentTime();
+    document.querySelector(domStrings.endTimeBtn).addEventListener('click', ctrlAddEndTime);
+  };
+
+  var ctrlAddEndTime = function(e) {
+    e.preventDefault();
+    var input, newEndTime;
+
+    input = UICtrl.getInput();
+    newEndTime = timeCtrl.addEndTime(input.minute, input.hour);
+    console.log(input);
+  };
+
+
+
+  // create a public 'init' function
+  return {
+    init: function(){
+      console.log('init func');
+      setupEventListeners();
+    }
+  };
+})(timeController, UIController);
+
+
+controller.init();

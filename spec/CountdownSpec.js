@@ -11,8 +11,23 @@ describe('some test that needs a fixture', function(){
     document.body.remove(document.querySelector('save-end-time'));
   });
 
+  beforeEach(function() {
+    window.countdownTimer.init();
+  });
+
   it('should have a button', function(){
     var button = document.querySelector("button");
     expect(button.innerText).toBe('Start countdown');
+  });
+
+  // it('should have a button', function(){
+  //   var button = document.querySelector("button");
+  //   expect(button.innerText).toBe('Start countdown');
+  // });
+
+  it('should display the current time', function(){
+    var currentTime = document.querySelector(".current-time");
+    var todaysDate = new Date();
+    expect(currentTime.innerText).toBe(todaysDate);
   });
 });
