@@ -51,9 +51,7 @@ var timeController = (function(){
   return {
     currentTime: function(){
       var newStartTime = new startTime();
-      console.log("new start time: ", newStartTime);
-      var timeString = newStartTime.hour;
-      timeString = timeString + ":" + newStartTime.minute;
+      timeString = newStartTime.hour + ":" + newStartTime.minute;
       return timeString;
     },
 

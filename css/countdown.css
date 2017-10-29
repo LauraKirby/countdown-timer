@@ -11,12 +11,9 @@ body{
   position:relative;
 }
 
-nav {
-  background-color: #DDECC8;
-  width: 32%; /* fallback for older browsers */
-  display: inline-block;
-  vertical-align: top;
-  padding: 4px;
+/* add css variable at the 'root' level */
+:root {
+  --teal: #c8eceb;
 }
 
 article {
